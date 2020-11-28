@@ -1,10 +1,12 @@
 package com.revature.beans;
 
+import java.util.Date;
+
 public class Form {
 	private int formID;
 	private int empID;
-	private String eventDate; 
-	private String reqDate;
+	private Date eventDate; 
+	private Date reqDate;
 	private String location;
 	private int reqAmount;
 	private String eventDescription;
@@ -17,7 +19,7 @@ public class Form {
 		
 	}
 
-	public Form(int formID, int empID, String eventDate, String reqDate, String location, int reqAmount,
+	public Form(int formID, int empID, Date eventDate, Date reqDate, String location, int reqAmount,
 			String eventDescription, String status, int eventID, int gradeID, int finalGrade) {
 		super();
 		this.formID = formID;
@@ -49,19 +51,19 @@ public class Form {
 		this.empID = empID;
 	}
 
-	public String getEventDate() {
+	public Date getEventDate() {
 		return eventDate;
 	}
 
-	public void setEventDate(String eventDate) {
+	public void setEventDate(Date eventDate) {
 		this.eventDate = eventDate;
 	}
 
-	public String getReqDate() {
+	public Date getReqDate() {
 		return reqDate;
 	}
 
-	public void setReqDate(String reqDate) {
+	public void setReqDate(Date reqDate) {
 		this.reqDate = reqDate;
 	}
 
@@ -128,6 +130,8 @@ public class Form {
 				+ ", status=" + status + ", eventID=" + eventID + ", gradeID=" + gradeID + ", finalGrade=" + finalGrade
 				+ "]";
 	}
+
+	
 	
 	
 
