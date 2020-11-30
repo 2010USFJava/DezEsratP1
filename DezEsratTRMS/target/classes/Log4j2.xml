@@ -8,7 +8,7 @@
 				</Pattern>
 			</PatternLayout>
 		</Console>
-        <File name="File" fileName="C:/Users/owner/Desktop/loggingTRMS.log">
+        <File name="File" fileName="C:/Users/owner/Desktop/logging.log">
             <PatternLayout>
                 <Pattern>
                     [%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n
