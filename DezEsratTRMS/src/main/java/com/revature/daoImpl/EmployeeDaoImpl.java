@@ -33,29 +33,12 @@ public class EmployeeDaoImpl implements EmployeeDao{
 		return eList;
 	}
 
-//	@Override
-//	public void insertNewEmployee(Employee e) throws SQLException {
-//		Connection conn=cf.getConnection();
-//		String sql="insert into employee values(DEFAULT,?,?,?,?,?,?,?,?)";
-//		PreparedStatement ps= conn.prepareStatement(sql);
-//		//ps.setInt(1, e.getEmpID());
-//		ps.setString(1, e.getFirstName());
-//		ps.setString(2, e.getLastName());
-//		ps.setString(3, e.getAddress());
-//		ps.setString(4, e.getEmail());
-//		ps.setString(5, e.getPhone());
-//		ps.setString(6, e.getUserName());
-//		ps.setString(7, e.getPassWord());
-//		ps.setString(8, e.getEmpType());
-//		ps.executeUpdate();
-//		//LogThis.LogIt("info", "New Employee added to database for: " + e.getFirstName() +" "+ e.getLastName() );
-//		
-//	}
+
 
 	@Override
 	public Employee getEmployeeById(int empId) throws SQLException {
 		Connection conn=cf.getConnection();
-		String sql="select * from Employee where 'empID'=?";
+		String sql="select * from Employee where ('empID')=?";
 		PreparedStatement ps= conn.prepareStatement(sql);
 		ps.setInt(1, empId);
 		ResultSet rs=ps.executeQuery();
@@ -70,7 +53,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 
 	@Override
 	public Employee getEmployeeByUserName(String userName) throws SQLException {
-		//String uName="";
+		
 		Connection conn=cf.getConnection();
 		String sql = "select * from employee where 'userName'=?";
 		PreparedStatement ps= conn.prepareCall(sql);
@@ -79,7 +62,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 		Employee em = null;
 		while(rs.next()) {
 			
-		   //uName=(rs.getString(7));
+		  
 			em = new Employee(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9));
 		}
 		
@@ -102,7 +85,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 		ps.setString(7, passWord);
 		ps.setString(8, empType);
 		ps.executeUpdate();
-		//LogThis.LogIt("info", "New Employee added to database for: " + firstName +" "+ lastName );
+		LogThis.LogIt("info", "New Employee added to database for: " + firstName +" "+ lastName );
 		
 	}
 	

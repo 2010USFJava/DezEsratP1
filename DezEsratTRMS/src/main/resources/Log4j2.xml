@@ -8,7 +8,8 @@
 				</Pattern>
 			</PatternLayout>
 		</Console>
-        <File name="File" fileName="C:\Users\Dez\Documents\workspace-spring-tool-suite-4-4.8.0.RELEASE\DezEsratP1\loggingTRMS.log">
+        <File name="File" fileName="C:/Users/owner/Desktop/logging.log">
+">
             <PatternLayout>
                 <Pattern>
                     [%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n
