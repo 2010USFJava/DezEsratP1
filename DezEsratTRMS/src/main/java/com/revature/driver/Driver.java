@@ -80,10 +80,45 @@ public class Driver {
 //			}
 //		
 		
+//		FormDaoImpl f = new FormDaoImpl();
+//		try {
+//			
+//			f.createNewForm(3,"2020-12-20", "2020-12-01", "NY", 600, "Traning", "pending", 1, 1, 0);
+//			
+//		} catch (SQLException e) {
+//		e.printStackTrace();
+//		}
+//		FormDaoImpl f = new FormDaoImpl();
+//		try {
+//			
+//			f.createNewForm(6,"2020-12-30", "2020-12-01", "GA", 800, "course", "pending", 2, 2, 0);
+//			
+//		} catch (SQLException e) {
+//		e.printStackTrace();
+//		}
+//		
+	
+//		FormDao fdao=new FormDaoImpl();
+//		
+//		//Employee el=new Employee();
+//		try {
+//			Form fo=fdao.getFormByID(3);
+//		
+//			System.out.println(fo.toString());
+//			}catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//	
+		EmployeeDao emp=new EmployeeDaoImpl();
+		Employee el=new Employee();
+		try { el = emp.getEmployeeLogin("354", "abj123");
+		
+			System.out.println(el.toString());
+			}catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 		
-	
-	
 	}
 
   }

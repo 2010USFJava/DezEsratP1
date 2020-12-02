@@ -9,6 +9,9 @@ public class HomeController {
 		
 		return "resources/html/empHome.html"; //htmlpage
 		
+		//BanCo home
+		
+		//
 		
 	}
 	

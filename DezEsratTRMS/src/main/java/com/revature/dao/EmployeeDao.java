@@ -15,5 +15,8 @@ public interface EmployeeDao {
 	public Employee getEmployeeById(int empId) throws SQLException;
 	
 	public Employee getEmployeeByUserName(String userName) throws SQLException;
+	
+	public Employee getEmployeeLogin(String passWord, String userName) throws SQLException;
+	
 
 }

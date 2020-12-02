@@ -1,12 +1,12 @@
 package com.revature.beans;
 
-import java.util.Date;
+
 
 public class Form {
 	private int formID;
 	private int empID;
-	private Date eventDate; 
-	private Date reqDate;
+	private String eventDate; 
+	private String reqDate;
 	private String location;
 	private int reqAmount;
 	private String eventDescription;
@@ -18,8 +18,16 @@ public class Form {
 	public Form() {
 		
 	}
+//	public Form(int formID, int empID,String eventDate,String reqDate,String location,int reqAmount,String eventDescription,
+//			int eventID, int gradeID, int finalGrade) {
+//		
+//		
+//		
+//		
+//	}
 
-	public Form(int formID, int empID, Date eventDate, Date reqDate, String location, int reqAmount,
+
+	public Form(int formID, int empID, String eventDate, String reqDate, String location, int reqAmount,
 			String eventDescription, String status, int eventID, int gradeID, int finalGrade) {
 		super();
 		this.formID = formID;
@@ -34,7 +42,8 @@ public class Form {
 		this.gradeID = gradeID;
 		this.finalGrade = finalGrade;
 	}
-
+	
+	
 	public int getFormID() {
 		return formID;
 	}
@@ -51,19 +60,19 @@ public class Form {
 		this.empID = empID;
 	}
 
-	public Date getEventDate() {
+	public String getEventDate() {
 		return eventDate;
 	}
 
-	public void setEventDate(Date eventDate) {
+	public void setEventDate(String eventDate) {
 		this.eventDate = eventDate;
 	}
 
-	public Date getReqDate() {
+	public String getReqDate() {
 		return reqDate;
 	}
 
-	public void setReqDate(Date reqDate) {
+	public void setReqDate(String reqDate) {
 		this.reqDate = reqDate;
 	}
 
@@ -130,6 +139,9 @@ public class Form {
 				+ ", status=" + status + ", eventID=" + eventID + ", gradeID=" + gradeID + ", finalGrade=" + finalGrade
 				+ "]";
 	}
+
+	
+	
 
 	
 	

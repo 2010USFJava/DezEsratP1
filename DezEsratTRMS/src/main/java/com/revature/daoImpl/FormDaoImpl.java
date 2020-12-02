@@ -16,14 +16,14 @@ public class FormDaoImpl implements FormDao{
 	public static ConnFactory cf=ConnFactory.getInstance();
 
 	@Override
-	public void createNewForm(Employee e, Date eventDate, Date reqDate, String location, int reqAmount,
+	public void createNewForm(int empID, String eventDate, String reqDate, String location, int reqAmount,
 			String eventDescription, String status, int eventID, int gradeID, int finalGrade) throws SQLException {
 		Connection conn=cf.getConnection();
-		String sql="insert into form values (DEFUALT, ?,?,?,?,?,?,?,?,?,?,)";
+		String sql="insert into form values (DEFAULT, ?,?,?,?,?,?,?,?,?,?)";
 		  PreparedStatement ps= conn.prepareStatement(sql);
-		    ps.setInt(1, e.getEmpID());
-			ps.setDate(2, eventDate);
-			ps.setDate(3, reqDate);
+		    ps.setInt(1, empID);
+			ps.setString(2, eventDate);
+			ps.setString(3, reqDate);
 			ps.setString(4, location);
 			ps.setInt(5, reqAmount);
 			ps.setString(6, eventDescription);
@@ -38,13 +38,13 @@ public class FormDaoImpl implements FormDao{
 	@Override
 	public Form getFormByID(int formID) throws SQLException {
 		Connection conn=cf.getConnection();
-		String sql="select * from form where ('formID')=?";
+		String sql="select * from form where \"formID\"=?";
 		PreparedStatement ps= conn.prepareStatement(sql);
 		ps.setInt(1, formID);
 		ResultSet rs=ps.executeQuery();
 		Form f=null;
 		while(rs.next()) {
-			f=new Form(rs.getInt(1),rs.getInt(2),rs.getDate(3),rs.getDate(4),rs.getString(5),rs.getInt(6),rs.getString(7),rs.getString(8),rs.getInt(9),rs.getInt(10),rs.getInt(11));
+			f=new Form(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6),rs.getString(7),rs.getString(8),rs.getInt(9),rs.getInt(10),rs.getInt(11));
 		}
 		return f;
 	}

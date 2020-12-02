@@ -38,7 +38,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 	@Override
 	public Employee getEmployeeById(int empId) throws SQLException {
 		Connection conn=cf.getConnection();
-		String sql="select * from Employee where ('empID')=?";
+		String sql="select * from Employee where \"empID\" = ?";
 		PreparedStatement ps= conn.prepareStatement(sql);
 		ps.setInt(1, empId);
 		ResultSet rs=ps.executeQuery();
@@ -55,7 +55,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 	public Employee getEmployeeByUserName(String userName) throws SQLException {
 		
 		Connection conn=cf.getConnection();
-		String sql = "select * from employee where 'userName'=?";
+		String sql = "select * from employee where \"userName\"=?";
 		PreparedStatement ps= conn.prepareCall(sql);
 		ps.setString(1, userName);
 		ResultSet rs = ps.executeQuery();
@@ -68,6 +68,9 @@ public class EmployeeDaoImpl implements EmployeeDao{
 		
 		return em;
 	}
+	
+	
+	
 
 	@Override
 	public void insertNewEployee(String firstName, String lastName, String address, String email, String phone,
@@ -88,7 +91,26 @@ public class EmployeeDaoImpl implements EmployeeDao{
 		LogThis.LogIt("info", "New Employee added to database for: " + firstName +" "+ lastName );
 		
 	}
-	
+
+
+
+	@Override
+	public Employee getEmployeeLogin(String passWord, String userName) throws SQLException {
+		Connection conn=cf.getConnection();
+		String sql = "select * from employee where \"passWord\"=? AND \"userName\"=?";
+		PreparedStatement ps= conn.prepareCall(sql);
+		ps.setString(1, passWord);
+		ps.setString(2,userName);
+		ResultSet rs = ps.executeQuery();
+		Employee em = null;
+		while(rs.next()) {
+			
+		  
+			em = new Employee(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9));
+		}
+		
+		return em;
+	}
 	
 	
 	

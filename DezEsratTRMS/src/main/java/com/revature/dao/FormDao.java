@@ -9,7 +9,7 @@ import com.revature.beans.Form;
 public interface FormDao {
 	
 	
-	public void createNewForm (Employee e,Date eventDate, Date reqDate, String location, int reqAmount, String eventDescription,String status,int eventID, int gradeID, int finalGrade) throws SQLException;
+	public void createNewForm (int empID,String eventDate, String reqDate, String location, int reqAmount, String eventDescription,String status,int eventID, int gradeID, int finalGrade) throws SQLException;
 	
 	public Form getFormByID(int formID) throws SQLException;
 	
