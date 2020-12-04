@@ -5,6 +5,8 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.revature.beans.Employee;
 import com.revature.beans.Form;
@@ -47,6 +49,41 @@ public class FormDaoImpl implements FormDao{
 			f=new Form(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6),rs.getString(7),rs.getString(8),rs.getInt(9),rs.getInt(10),rs.getInt(11));
 		}
 		return f;
+	}
+
+	@Override
+	public List<Form> getAllEmpForms(int empID) throws SQLException {
+		List<Form>fList=new ArrayList<Form>();
+		Connection conn=cf.getConnection();
+		String sql="select * from form where \"empID\"=?";
+		PreparedStatement ps= conn.prepareStatement(sql);
+		ps.setInt(1, empID);
+		ResultSet rs=ps.executeQuery();
+		while (rs.next()) {
+			fList.add(new Form(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6),rs.getString(7),rs.getString(8),rs.getInt(9),rs.getInt(10),rs.getInt(11)));
+			
+		}
+		
+		return fList;
+	}
+		
+		
+	
+
+	@Override
+	public List<Form> getByStatus(String status) throws SQLException {
+		List<Form>fList=new ArrayList<Form>();
+		Connection conn=cf.getConnection();
+		String sql="select * from form where \"status\"=?";
+		PreparedStatement ps= conn.prepareStatement(sql);
+		ps.setString(1, status);
+		ResultSet rs=ps.executeQuery();
+		while (rs.next()) {
+			fList.add(new Form(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6),rs.getString(7),rs.getString(8),rs.getInt(9),rs.getInt(10),rs.getInt(11)));
+			
+		}
+		
+		return fList;
 	}
 
 	

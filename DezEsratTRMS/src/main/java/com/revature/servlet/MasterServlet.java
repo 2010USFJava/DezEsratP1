@@ -12,10 +12,12 @@ public class MasterServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException{
 		System.out.println("in doGet");
-		req.getRequestDispatcher(RequestHelper.process(req)).forward(req,res);
+		req.getRequestDispatcher(RequestHelper.process(req)).forward(req,res); //.process is another method in request helper
+		//it will go request dispatcher ...
 	}
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException{
-		System.out.println("in Master doPost");
-		//if it is multipull login like employee BanCo ,how it should be
+		System.out.println("in doPost");
+		req.getRequestDispatcher(RequestHelper.process(req)).forward(req,res);
+		//if it is multiple login like employee BanCo ,how it should be work?????
 	}
 }

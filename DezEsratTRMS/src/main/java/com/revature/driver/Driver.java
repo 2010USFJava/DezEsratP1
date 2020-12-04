@@ -109,14 +109,36 @@ public class Driver {
 //			e.printStackTrace();
 //		}
 //	
-		EmployeeDao emp=new EmployeeDaoImpl();
-		Employee el=new Employee();
-		try { el = emp.getEmployeeLogin("354", "abj123");
+//		EmployeeDao emp=new EmployeeDaoImpl();
+//		Employee el=new Employee();
+//		try { el = emp.getEmployeeLogin("354", "abj123");
+//		
+//			System.out.println(el.toString());
+//			}catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//		
+//		FormDaoImpl fDao=new FormDaoImpl();
+//		
+//		try {
+//			
+//			List<Form> fList = (ArrayList<Form>)fDao.getAllEmpForms(6);
+//			System.out.println(fList.toString());
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//		
 		
-			System.out.println(el.toString());
-			}catch (SQLException e) {
+		FormDaoImpl fDao=new FormDaoImpl();
+		
+		try {
+			
+			List<Form> fList = (ArrayList<Form>)fDao.getByStatus("pending");
+			System.out.println(fList.toString());
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+			
 		
 		
 	}

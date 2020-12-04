@@ -9,7 +9,7 @@ public interface EmployeeDao {
 	
 	public List<Employee> getAllEmployees() throws SQLException;
 	
-	//public void insertNewEmployee(Employee e) throws SQLException;
+	
 	public void insertNewEployee(String firstName, String lastName, String address, String email, String phone, String userName, String passWord, String empType) throws SQLException;
 	
 	public Employee getEmployeeById(int empId) throws SQLException;

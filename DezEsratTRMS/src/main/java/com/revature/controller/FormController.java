@@ -6,8 +6,10 @@ public class FormController {
 	
 	
 	public static String employeeForm(HttpServletRequest req) {
-		return "resources/html/Register.html";		
+		return "resources/html/form.html";		
 	}
+	
+	
 	
 	//work on enter new from
 	
