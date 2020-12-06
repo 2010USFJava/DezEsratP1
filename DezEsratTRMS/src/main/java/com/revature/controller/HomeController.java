@@ -10,8 +10,15 @@ public class HomeController {
 		return "resources/html/empHome.html"; //htmlpage
 		
 		//BanCo home
+	}
+     public static String requesterHome(HttpServletRequest req) {
 		
-		//
+		return "resources/html/requesterHome.html"; //htmlpage
+		
+		//BanCo home
+	}
+	
+		
 		
 	}
 	
@@ -20,4 +27,4 @@ public class HomeController {
 	
 	
 
-}
+

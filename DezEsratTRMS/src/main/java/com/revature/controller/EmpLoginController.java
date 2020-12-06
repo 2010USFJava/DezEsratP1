@@ -1,13 +1,21 @@
 package com.revature.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import com.revature.beans.Employee;
+import com.revature.beans.Form;
 import com.revature.services.EmployeeService;
 
 public class EmpLoginController {
 	
 	static EmployeeService eServ= new EmployeeService();
+	public static Employee currentEmp;
+	public static Form currentForm;
+	public static List<Form>fList=new ArrayList();
+	
 	
 	public static String login(HttpServletRequest req) {
 		if(!req.getMethod().equals("POST")) {//no one can directly get our html resours page it will check equals method 
@@ -23,6 +31,7 @@ public class EmpLoginController {
 			return "invalid.employee";//redirect to invalid ?
 		}else {
 			//.employee is servlet end point ,Exp: <url-pattern>*.employee</url-pattern>
+			currentEmp=emp;
 			req.getSession().setAttribute("currentEmp", emp);
 			
 			return "home.employee";//redirect to home?

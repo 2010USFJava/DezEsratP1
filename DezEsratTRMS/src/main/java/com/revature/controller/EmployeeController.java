@@ -15,8 +15,8 @@ public class EmployeeController {
 	public static void getSessionEmployee(HttpServletRequest req,HttpServletResponse res) throws JsonProcessingException, IOException{
 		//create session for employee then later on i can use on javaScripts
 	
-	Employee emp=(Employee) req.getSession().getAttribute("currentEmployee");//
-	res.getWriter().write(new ObjectMapper().writeValueAsString(emp));// store variable emp
+	  Employee emp=(Employee) req.getSession().getAttribute("currentEmployee");//
+	  res.getWriter().write(new ObjectMapper().writeValueAsString(emp));// store variable emp
 	//write something inside the json as emp and add that to response.
 	}
 

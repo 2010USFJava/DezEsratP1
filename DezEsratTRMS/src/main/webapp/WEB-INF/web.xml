@@ -30,5 +30,14 @@
     <servlet-name>FormServlet</servlet-name>
     <url-pattern>*.form</url-pattern>
   </servlet-mapping>
-    
+  <servlet>
+    <description></description>
+    <display-name>JsonMasterServlet</display-name>
+    <servlet-name>JsonMasterServlet</servlet-name>
+    <servlet-class>com.revature.servlet.JsonMasterServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>JsonMasterServlet</servlet-name>
+    <url-pattern>*.json</url-pattern>
+  </servlet-mapping>
 </web-app>

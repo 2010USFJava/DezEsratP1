@@ -128,18 +128,34 @@ public class Driver {
 //			e.printStackTrace();
 //		}
 //		
+//		
+//		FormDaoImpl fDao=new FormDaoImpl();
+//		
+//		try {
+//			
+//			List<Form> fList = (ArrayList<Form>)fDao.getByStatus("pending");
+//			System.out.println(fList.toString());
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//			
+//		FormDaoImpl fDao=new FormDaoImpl();
+//		try {
+//			Form fo=fDao.updateFormStatus(3, "Approve");
+//		
+//			System.out.println(fo.toString());
+//			}catch (SQLException e) {
+//			e.printStackTrace();
+//		}
 		
 		FormDaoImpl fDao=new FormDaoImpl();
-		
 		try {
-			
-			List<Form> fList = (ArrayList<Form>)fDao.getByStatus("pending");
-			System.out.println(fList.toString());
-		} catch (SQLException e) {
+			fDao.updateReqAmt(2, 1000);
+		
+			System.out.println(fDao.toString());
+			}catch (SQLException e) {
 			e.printStackTrace();
 		}
-			
-		
 		
 	}
 

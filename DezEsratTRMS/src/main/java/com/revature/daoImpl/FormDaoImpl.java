@@ -86,5 +86,58 @@ public class FormDaoImpl implements FormDao{
 		return fList;
 	}
 
+	@Override
+	public List<Form> updateStatus(Form f, String newStatus) throws SQLException {
+		ArrayList<Form> fList = new ArrayList<Form>();
+        Connection conn = cf.getConnection();
+        String sql="UPDATE Form SET \"status\"=? WHERE \"formID\" = ?";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setString(1, newStatus);
+        ps.setInt(2, f.getFormID());
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            fList.add(new Form(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6),rs.getString(7),rs.getString(8),rs.getInt(9),rs.getInt(10),rs.getInt(11)));
+			
+		}
+		
+		return fList;
+	}
+
+	@Override
+	public void updateFormStatus(int formID, String newStatus) throws SQLException {
+		 Connection conn = cf.getConnection();
+	        String sql= "UPDATE Form SET \"status\"=? WHERE \"formID\" = ?";
+	        PreparedStatement ps = conn.prepareStatement(sql);
+	        ps.setString(1, newStatus);
+	        ps.setInt(2, formID);
+	        ps.executeUpdate();
+
+	       
+		}
+	
+
+	@Override
+	public void updateReqAmt(int formID, int newReqAmt) throws SQLException {
+		Connection conn = cf.getConnection();
+        String sql= "UPDATE Form SET \"reqAmount\"=? WHERE \"formID\" = ?";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setInt(1, newReqAmt);
+        ps.setInt(2, formID);
+        ps.executeQuery();
+       
+	}
+
+	@Override
+	public void updateFinalGrd(int formID, int newFinalGrade) throws SQLException {
+		Connection conn = cf.getConnection();
+        String sql= "UPDATE Form SET \"finalGrade\"=? WHERE \"formID\" = ?";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setInt(1, newFinalGrade);
+        ps.setInt(2, formID);
+        ps.executeQuery();
+		
+	}
+
+	
 	
 }
