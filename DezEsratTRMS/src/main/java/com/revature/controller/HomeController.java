@@ -15,7 +15,7 @@ public class HomeController {
 		
 		return "resources/html/requesterHome.html"; //htmlpage
 		
-		//BanCo home
+	//	employee home
 	}
 	
 		

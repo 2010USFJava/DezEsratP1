@@ -33,8 +33,12 @@ public class EmpLoginController {
 			//.employee is servlet end point ,Exp: <url-pattern>*.employee</url-pattern>
 			currentEmp=emp;
 			req.getSession().setAttribute("currentEmp", emp);
+			if(emp.getEmpType()=="requester") {
+				return "home.requester";
+			}
 			
 			return "home.employee";//redirect to home?
+			
 		}
 		
 		
