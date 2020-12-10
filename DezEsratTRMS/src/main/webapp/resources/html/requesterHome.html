@@ -7,7 +7,7 @@
 <body>
 <div class="login-controller">
 		<h4>Welcome to requester Home </h4>
-		<form action="/DezEsratTRMS/form.change">
+		<form action="/DezEsratTRMS/info.form">
 					<div class="container">
 						<button class="btn btn-xl btn-outline-light" type='submit'
 							id="formCreate">Submit New Reimbursement
@@ -16,13 +16,31 @@
 					
 				</form>
 		
-	</div>
-	<div id="formByIdTable"></div>
+</div>
+<div>
+	
+	
+	
+	<h2>Submit grade Here </h2>
+	<br><br>
+	<form action="/DezEsratTRMS/update.form">
+	<label for="grade"><b>Please Enter FormID</b></label><br><br>
+    <input type="text" placeholder="FormID" name="formID" required><br><br>
+    <label for="grade"><b>Please Enter Final Grade</b></label><br><br>
+    <input type="text" placeholder="finalgrade" name="finalGrade" required><br><br>
+    <button class="btn btn-xl btn-outline-light" type='submit'
+							id="submitgrade">Submit Grade</button><br><br>
+	
+	
+	
+  </form>
+  
+  </div>
 
+	<div id="formByIdTable"></div>
+	<br><br>
+	
 
 <script type="text/javascript" src="resources/js/RequesterHome.js" ></script>
-
-
-
 </body>
 </html>

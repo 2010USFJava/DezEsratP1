@@ -31,14 +31,16 @@ public class JsonRequestHelper {
 			
 		case "/DezEsratTRMS/empHome.json":   
 			HomeController.employeeHome(req);
-			fs.getAllEmpForms(EmpLoginController.currentEmp.getEmpID());
+			fs.getByStatus(EmpLoginController.currentForm.getStatus());
+			//fs.getAllEmpForms(EmpLoginController.currentEmp.getEmpID());
 			res.getWriter().write(new ObjectMapper().writeValueAsString(EmpLoginController.fList));
 
 			break;
 		case "/DezEsratTRMS/requesterHome.json":   
 			HomeController.requesterHome(req);
-			fs.getByStatus(EmpLoginController.currentForm.getStatus());
-			res.getWriter().write(new ObjectMapper().writeValueAsString(EmpLoginController.fList));
+		
+			//fs.getByStatus(EmpLoginController.currentForm.getStatus());
+			res.getWriter().write(new ObjectMapper().writeValueAsString(fs.getAllEmpForms(EmpLoginController.currentEmp.getEmpID())));
 
 			break;		
 			

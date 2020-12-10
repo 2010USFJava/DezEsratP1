@@ -27,16 +27,26 @@ public class EmpLoginController {
 		String passWord=req.getParameter("passWord");
 		System.out.println("userName :" +userName+"PassWord: " + passWord);
 		Employee emp=eServ.logGetEmp(userName, passWord);
+		currentEmp=emp;
+		System.out.println(emp.getEmpType().toString());
 		if(emp==null) {
+			//currentEmp=emp;
 			return "invalid.employee";//redirect to invalid ?
-		}else {
-			//.employee is servlet end point ,Exp: <url-pattern>*.employee</url-pattern>
-			System.out.println("we are in login");
-			currentEmp=emp;
+		}else if(emp.getEmpType().equals("requester")) {
+			System.out.println("we are in login as a requester");
+			//currentEmp=emp;
 			req.getSession().setAttribute("currentEmp", emp);
-			if(emp.getEmpType()=="requester") {
-				return "home.requester";
-			}
+			
+			
+			return "reqhome.employee";
+		}
+		else {
+			//.employee is servlet end point ,Exp: <url-pattern>*.employee</url-pattern>
+			System.out.println("we are in login as a admin");
+			//currentEmp=emp;
+			req.getSession().setAttribute("currentEmp", emp);
+			//System.out.println(emp.getEmpType().toString());
+			
 			
 			return "home.employee";//redirect to home?
 			

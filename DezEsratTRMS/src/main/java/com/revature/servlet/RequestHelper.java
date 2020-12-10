@@ -26,12 +26,14 @@ public class RequestHelper {
 			System.out.println("in employee login rhelper");
 			return EmpLoginController.login(req); //login method in my login controller
 			
+		case "/DezEsratTRMS/reqhome.employee":
+			System.out.println("in requester home rhelper");
+			return HomeController.requesterHome(req);	
+			
 		case "/DezEsratTRMS/home.employee":
 			System.out.println("in employee home rhelper");
 			return HomeController.employeeHome(req); //employeeHome method in my home controller
-		case "/DezEsratTRMS/home.requester":
-			System.out.println("in requester home rhelper");
-			return HomeController.requesterHome(req);	
+		
 			
 		case "/DezEsratTRMS/new.form":
 			System.out.println("in employee form rhelper");
@@ -40,6 +42,10 @@ public class RequestHelper {
 		case "/DezEsratTRMS/info.form":
 			System.out.println("in employee form rhelper");
 			return FormController.employeeForm(req);
+			
+		case "/DezEsratTRMS/update.form":
+			System.out.println("in form form rhelper");
+			return FormController.updateStatus(req);
 		
 		default:
 			System.out.println("in default case");
