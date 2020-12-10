@@ -1,6 +1,7 @@
 package com.revature.daoImpl;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,15 +14,29 @@ import com.revature.util.ConnFactory;
 import com.revature.util.LogThis;
 
 public class EmployeeDaoImpl implements EmployeeDao{
+	static {
+		try {
+			Class.forName("org.postgresql.Driver");
+		}catch(ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	private String url="jdbc:postgresql://java2010usf.cr8wczxd9ies.us-east-2.rds.amazonaws.com:5432/postgres?currentSchema=trms";
+	private  String username="esrat";
+	private String password="esratjahan";
 	
-	public static ConnFactory cf=ConnFactory.getInstance();
+	//public static ConnFactory cf = ConnFactory.getInstance();
+	
+	//public static ConnFactory cf=ConnFactory.getInstance();
 	
 	
 
 	@Override
 	public List<Employee> getAllEmployees() throws SQLException {
+		Connection conn = DriverManager.getConnection(this.url, this.username, this.password);
 		List<Employee>eList=new ArrayList<Employee>();
-		Connection conn=cf.getConnection();
+		//Connection conn=cf.getConnection();
+		
 		String sql="select * from employee";
 		PreparedStatement ps= conn.prepareStatement(sql);
 		ResultSet rs=ps.executeQuery();
@@ -37,7 +52,8 @@ public class EmployeeDaoImpl implements EmployeeDao{
 
 	@Override
 	public Employee getEmployeeById(int empId) throws SQLException {
-		Connection conn=cf.getConnection();
+		Connection conn = DriverManager.getConnection(this.url, this.username, this.password);
+		//Connection conn=cf.getConnection();
 		String sql="select * from Employee where \"empID\" = ?";
 		PreparedStatement ps= conn.prepareStatement(sql);
 		ps.setInt(1, empId);
@@ -53,10 +69,10 @@ public class EmployeeDaoImpl implements EmployeeDao{
 
 	@Override
 	public Employee getEmployeeByUserName(String userName) throws SQLException {
-		
-		Connection conn=cf.getConnection();
+		Connection conn = DriverManager.getConnection(this.url, this.username, this.password);
+		//Connection conn=cf.getConnection();
 		String sql = "select * from employee where \"userName\"=?";
-		PreparedStatement ps= conn.prepareCall(sql);
+		PreparedStatement ps= conn.prepareStatement(sql);
 		ps.setString(1, userName);
 		ResultSet rs = ps.executeQuery();
 		Employee em = null;
@@ -75,8 +91,8 @@ public class EmployeeDaoImpl implements EmployeeDao{
 	@Override
 	public void insertNewEployee(String firstName, String lastName, String address, String email, String phone,
 			String userName, String passWord, String empType) throws SQLException{
-		
-		Connection conn=cf.getConnection();
+		Connection conn = DriverManager.getConnection(this.url, this.username, this.password);
+		//Connection conn=cf.getConnection();
 		String sql="insert into employee values(DEFAULT,?,?,?,?,?,?,?,?)";
 	    PreparedStatement ps= conn.prepareStatement(sql);
 	    ps.setString(1, firstName);
@@ -96,7 +112,8 @@ public class EmployeeDaoImpl implements EmployeeDao{
 
 	@Override
 	public Employee getEmployeeLogin(String passWord, String userName) throws SQLException {
-		Connection conn=cf.getConnection();
+		Connection conn = DriverManager.getConnection(this.url, this.username, this.password);
+		//Connection conn=cf.getConnection();
 		String sql = "select * from employee where \"passWord\"=? AND \"userName\"=?";
 		PreparedStatement ps= conn.prepareCall(sql);
 		ps.setString(1, passWord);

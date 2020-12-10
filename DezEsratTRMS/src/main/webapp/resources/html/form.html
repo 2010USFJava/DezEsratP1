@@ -5,6 +5,35 @@
 <title>Form page</title>
 </head>
 <body>
-
+ <div class="container">
+  <form action="/DezEsratTRMS/new.form" method="POST">
+     <input type="text" placeholder="Event Date" name="eventDate" required>
+     <br><br>
+     <input type="text" placeholder="Request Date" name="reqDate" required><br><br>
+     <input type="text" placeholder="Location" name="location" required><br><br>
+     <input type="text" onchange="calReqAmount()" placeholder="Request Amount" name="reqAmount" required><br><br>
+     <input type="text" placeholder="Event Description" name="eventDescription" required><br><br>
+     <label for="event">Select an event:</label><br><br>
+ 		<select onchange="calReqAmount()" name="eventID" id="event">
+    	<option value="1">University Course</option>
+    	<option value="2">Seminar</option>
+   		<option value="3">Certification Preparation</option>
+    	<option value="4">Certification</option>
+    	<option value="5">Technical Training</option>
+    	<option value="6">Other</option>
+  		</select>
+  		<br><br>
+    <label for="gradeFormate">Select the Grading Format:</label>
+ 		<select name="gradeID" id="gradeID">
+    	<option value="1">grade</option>
+    	<option value="2">presentation</option>
+   		</select>
+  		<br><br>
+     <input type="text" placeholder="Final Grade" name="finalGrade">
+     <input type='submit' value="Submit">
+    </form>
+    </div>
+    
+  <script type="text/javascript" src="../js/form.js"></script>
 </body>
 </html>

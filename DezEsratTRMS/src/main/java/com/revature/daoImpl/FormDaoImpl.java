@@ -2,6 +2,7 @@ package com.revature.daoImpl;
 
 import java.sql.Connection;
 import java.sql.Date;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,12 +16,23 @@ import com.revature.util.ConnFactory;
 
 public class FormDaoImpl implements FormDao{
 	
-	public static ConnFactory cf=ConnFactory.getInstance();
+	//public static ConnFactory cf=ConnFactory.getInstance();
+	static {
+		try {
+			Class.forName("org.postgresql.Driver");
+		}catch(ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	private String url="jdbc:postgresql://java2010usf.cr8wczxd9ies.us-east-2.rds.amazonaws.com:5432/postgres?currentSchema=trms";
+	private  String username="esrat";
+	private String password="esratjahan";
 
 	@Override
 	public void createNewForm(int empID, String eventDate, String reqDate, String location, int reqAmount,
 			String eventDescription, String status, int eventID, int gradeID, int finalGrade) throws SQLException {
-		Connection conn=cf.getConnection();
+		//Connection conn=cf.getConnection();
+		Connection conn = DriverManager.getConnection(this.url, this.username, this.password);
 		String sql="insert into form values (DEFAULT, ?,?,?,?,?,?,?,?,?,?)";
 		  PreparedStatement ps= conn.prepareStatement(sql);
 		    ps.setInt(1, empID);
@@ -39,7 +51,8 @@ public class FormDaoImpl implements FormDao{
 
 	@Override
 	public Form getFormByID(int formID) throws SQLException {
-		Connection conn=cf.getConnection();
+		Connection conn = DriverManager.getConnection(this.url, this.username, this.password);
+		//Connection conn=cf.getConnection();
 		String sql="select * from form where \"formID\"=?";
 		PreparedStatement ps= conn.prepareStatement(sql);
 		ps.setInt(1, formID);
@@ -53,8 +66,9 @@ public class FormDaoImpl implements FormDao{
 
 	@Override
 	public List<Form> getAllEmpForms(int empID) throws SQLException {
+		Connection conn = DriverManager.getConnection(this.url, this.username, this.password);
 		List<Form>fList=new ArrayList<Form>();
-		Connection conn=cf.getConnection();
+		//Connection conn=cf.getConnection();
 		String sql="select * from form where \"empID\"=?";
 		PreparedStatement ps= conn.prepareStatement(sql);
 		ps.setInt(1, empID);
@@ -72,8 +86,9 @@ public class FormDaoImpl implements FormDao{
 
 	@Override
 	public List<Form> getByStatus(String status) throws SQLException {
+		Connection conn = DriverManager.getConnection(this.url, this.username, this.password);
 		List<Form>fList=new ArrayList<Form>();
-		Connection conn=cf.getConnection();
+		//Connection conn=cf.getConnection();
 		String sql="select * from form where \"status\"=?";
 		PreparedStatement ps= conn.prepareStatement(sql);
 		ps.setString(1, status);
@@ -88,8 +103,9 @@ public class FormDaoImpl implements FormDao{
 
 	@Override
 	public List<Form> updateStatus(Form f, String newStatus) throws SQLException {
+		Connection conn = DriverManager.getConnection(this.url, this.username, this.password);
 		ArrayList<Form> fList = new ArrayList<Form>();
-        Connection conn = cf.getConnection();
+        //Connection conn = cf.getConnection();
         String sql="UPDATE Form SET \"status\"=? WHERE \"formID\" = ?";
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setString(1, newStatus);
@@ -105,7 +121,8 @@ public class FormDaoImpl implements FormDao{
 
 	@Override
 	public void updateFormStatus(int formID, String newStatus) throws SQLException {
-		 Connection conn = cf.getConnection();
+		Connection conn = DriverManager.getConnection(this.url, this.username, this.password);
+		 //Connection conn = cf.getConnection();
 	        String sql= "UPDATE Form SET \"status\"=? WHERE \"formID\" = ?";
 	        PreparedStatement ps = conn.prepareStatement(sql);
 	        ps.setString(1, newStatus);
@@ -118,7 +135,8 @@ public class FormDaoImpl implements FormDao{
 
 	@Override
 	public void updateReqAmt(int formID, int newReqAmt) throws SQLException {
-		Connection conn = cf.getConnection();
+		Connection conn = DriverManager.getConnection(this.url, this.username, this.password);
+		//Connection conn = cf.getConnection();
         String sql= "UPDATE Form SET \"reqAmount\"=? WHERE \"formID\" = ?";
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setInt(1, newReqAmt);
@@ -129,7 +147,8 @@ public class FormDaoImpl implements FormDao{
 
 	@Override
 	public void updateFinalGrd(int formID, int newFinalGrade) throws SQLException {
-		Connection conn = cf.getConnection();
+		Connection conn = DriverManager.getConnection(this.url, this.username, this.password);
+		//Connection conn = cf.getConnection();
         String sql= "UPDATE Form SET \"finalGrade\"=? WHERE \"formID\" = ?";
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setInt(1, newFinalGrade);

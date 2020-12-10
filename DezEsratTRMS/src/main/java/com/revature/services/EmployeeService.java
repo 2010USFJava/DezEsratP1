@@ -16,6 +16,9 @@ public class EmployeeService {
 		List<Employee> eList = new ArrayList<Employee>();
 		try {
 			eList = empDao.getAllEmployees();
+			for(Employee e: eList) {
+				System.out.println(e);
+			}
 		} catch (SQLException e1) {
 			
 			e1.printStackTrace();

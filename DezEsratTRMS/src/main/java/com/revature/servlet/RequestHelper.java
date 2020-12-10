@@ -1,19 +1,27 @@
 package com.revature.servlet;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.revature.controller.EmpLoginController;
-
+import com.revature.controller.EmpRegisterController;
 import com.revature.controller.EmployeeController;
 import com.revature.controller.FormController;
 import com.revature.controller.HomeController;
 
 public class RequestHelper {
 	
-	public static String process(HttpServletRequest req) {
+	public static String process(HttpServletRequest req) throws  JsonMappingException, IOException {
 		System.out.println(req.getRequestURI()); //URI= what resource am I going to 
 		
 		switch(req.getRequestURI()) {
+		case "/DezEsratTRMS/register.employee":
+			System.out.println("in employee register rhelper");
+			return EmpRegisterController.employeeRegister(req);
+			
 		case "/DezEsratTRMS/login.employee":
 			System.out.println("in employee login rhelper");
 			return EmpLoginController.login(req); //login method in my login controller

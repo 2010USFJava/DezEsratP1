@@ -12,10 +12,12 @@ import com.revature.beans.Employee;
 import com.revature.beans.Form;
 import com.revature.daoImpl.EmployeeDaoImpl;
 import com.revature.daoImpl.FormDaoImpl;
+import com.revature.services.EmployeeService;
 import com.revature.services.FormService;
 
 public class FormController {
 	static FormService fser=new FormService();
+	static EmployeeService eser=new EmployeeService();
 	
 //	public static void getSessionForm(HttpServletRequest req,HttpServletResponse res) throws JsonProcessingException, IOException{
 //		//create session for employee then later on i can use on javaScripts
@@ -35,22 +37,27 @@ public class FormController {
 		return "resources/html/form.html";		
 	}
 	public static String createNewForm(HttpServletRequest req ) {
-		String formID=req.getParameter("formID");
-		String empID = req.getParameter("empID");
+		//String formID=req.getParameter("formID");
+		//int empID = EmpLoginController.currentEmp.getEmpID();
         String eventDate = req.getParameter("eventDate");
         String reqDate = req.getParameter("reqDate");
         String location = req.getParameter("location");
         String reqAmount = req.getParameter("reqAmount");
         String eventDescription = req.getParameter("eventDescription");
-        String status = req.getParameter("status");
+        //String status = req.getParameter("status");
         String eventID = req.getParameter("eventID");
         String gradeID = req.getParameter("gradeID");
         String finalGrade = req.getParameter("finalGrade");
 
-        Form f = new Form(Integer.parseInt(formID),Integer.parseInt(empID), eventDate, reqDate, location, Integer.parseInt(reqAmount), eventDescription,status, Integer.parseInt(eventID),Integer.parseInt(gradeID),Integer.parseInt(finalGrade));
+        Form f = new Form(1,1,eventDate, reqDate, location, Integer.parseInt(reqAmount), eventDescription, "pending",Integer.parseInt(eventID),Integer.parseInt(gradeID),Integer.parseInt(finalGrade));
+        EmpLoginController.currentForm=f;
         System.out.println("In Form Controller" + f);
         fser.createNewForm(f);
-        return "empHome.html";  ///maybe we don't need recourse
+        if(EmpLoginController.currentEmp.getEmpType()=="requester") {
+        	return "home.requester";
+		}
+		return "home.employee";//redirect to home?)
+       // return "empHome.html";  ///maybe we don't need recourse
     }
 	
 	

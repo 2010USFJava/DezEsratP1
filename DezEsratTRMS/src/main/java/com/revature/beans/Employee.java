@@ -14,6 +14,20 @@ public class Employee {
 	public Employee() {
 		
 	}
+	public Employee( String firstName, String lastName, String address, String email, String phone,
+			String userName, String passWord, String empType) {
+		super();
+		
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.address = address;
+		this.email = email;
+		this.phone = phone;
+		this.userName = userName;
+		this.passWord = passWord;
+		this.empType = empType;
+	}
+
 
 	public Employee(int empID, String firstName, String lastName, String address, String email, String phone,
 			String userName, String passWord, String empType) {

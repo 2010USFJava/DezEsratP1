@@ -31,6 +31,7 @@ public class EmpLoginController {
 			return "invalid.employee";//redirect to invalid ?
 		}else {
 			//.employee is servlet end point ,Exp: <url-pattern>*.employee</url-pattern>
+			System.out.println("we are in login");
 			currentEmp=emp;
 			req.getSession().setAttribute("currentEmp", emp);
 			if(emp.getEmpType()=="requester") {
