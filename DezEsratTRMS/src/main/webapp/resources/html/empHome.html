@@ -10,7 +10,32 @@
   <div class="login-controller">
 		<h4>Welcome to admin Home </h4>
 	</div>
+<div>
+	<h2>Submit grade Here </h2>
+	<br><br>
+ <form action="/DezEsratTRMS/update.form">
+	<label for="status"><b>Please Enter FormID</b></label><br><br>
+    <input type="text" placeholder="FormID" name="formID" required><br><br>
+    <button class="btn btn-xl btn-outline-light" type='submit'
+							id="approve">Approve</button><br><br>
+	
+ </form>
+ 
+ <form action="/DezEsratTRMS/deny.form">
+ <label for="status"><b>Please Enter FormID</b></label><br><br>
+    <input type="text" placeholder="FormID" name="formID" required><br><br>						
+	<button class="btn btn-xl btn-outline-light" type='submit'
+							id="deny">Deny</button><br><br>						
+	
+ 
+ </form>
+  
+ </div>
 	<div id="formByStatusTable"></div>
+	<br><br>
+	 <form method="post" action="/DezEsratTRMS/logout.json">
+	 <button value = "logout">Logout</button> 
+     </form>
    
 	<script type="text/javascript" src="resources/js/empHome.js" ></script>
 	

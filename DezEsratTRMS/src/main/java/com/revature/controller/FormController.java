@@ -64,8 +64,22 @@ public class FormController {
         fser.createNewForm(f);
         if(EmpLoginController.currentEmp.getEmpType().equals("requester")) {
         	return "resources/html/requesterHome.html";
+		}else {
+//			if(EmpLoginController.currentEmp.getEmpType().equals("BenCo")) {
+//				EmpLoginController.fList=fser.getByStatus("Approved By DepartmentHead");
+//				return "resources/html/empHome.html";
+//			}
+//			if(EmpLoginController.currentEmp.getEmpType().equals("DepartmentHead")) {
+//				EmpLoginController.fList=fser.getByStatus("Approved By DirectSuoervisor");
+//				return "resources/html/empHome.html";
+//			}
+//			if(EmpLoginController.currentEmp.getEmpType().equals("DirectSuoervisor")) {
+//				EmpLoginController.fList=fser.getByStatus("pending");
+//				return "resources/html/empHome.html";
+//			}
+			return "resources/html/empHome.html";//redirect to home?)
 		}
-		return "resources/html/empHome.html";//redirect to home?)
+		
        // return "empHome.html";  ///maybe we don't need recourse
     }
 	
@@ -108,7 +122,13 @@ public class FormController {
 		
 	}
 	
-	
+	public static String denyStatus(HttpServletRequest req) {
+		int formID=Integer.parseInt(req.getParameter("formID"));
+		fser.updateFormStatus(formID, "denied");
+		return "resources/html/requestDeny.html";
+		
+		
+	}
 	
 
 }

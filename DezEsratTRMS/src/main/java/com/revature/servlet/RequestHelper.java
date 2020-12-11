@@ -46,6 +46,9 @@ public class RequestHelper {
 		case "/DezEsratTRMS/update.form":
 			System.out.println("in form form rhelper");
 			return FormController.updateStatus(req);
+		case "/DezEsratTRMS/deny.form":
+			System.out.println("in form form rhelper");
+			return FormController.denyStatus(req);
 		
 		default:
 			System.out.println("in default case");

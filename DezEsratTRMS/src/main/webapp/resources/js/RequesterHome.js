@@ -1,14 +1,12 @@
 window.onload = function() {
 	console.log("window");
 	getFormById();
-	//createTableFromJson(getFormById());
+	
 }
 
 function getFormById() {
 	console.log("inside the form");
-	//	var obj, dbParam, form, txt = "";
-	//	obj = { table: "form", limit: 20 };
-	//	dbParam = JSON.stringify(obj);
+	
 	let xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
 		console.log("the ready state has changed");
@@ -21,18 +19,7 @@ function getFormById() {
 	xhttp.open("GET", "http://localhost:8080/DezEsratTRMS/requesterHome.json");
 	xhttp.send();
 }
-//			txt += "<table border='1'>"
-//			for (i in form) {
-//				txt += "<tr><td>" + form[i].formID + form[i].reqDate + form[i].reqAmount + form[i].status + form[i].finalGrade + "</td></tr>";
-//			}
-//			txt += "</table>"
-//			document.getElementById("formByIdTable").innerHTML = txt;
-//		}
-//	}
-//	xhttp.open("POST", "http://localhost:8080/DezEsratTRMS/requesterHome.json", true);
-//	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-//	xhttp.send("x=" + dbParam);
-//}
+
 
 function createTableFromJson(form) {
 	console.log(form);
@@ -43,7 +30,7 @@ function createTableFromJson(form) {
 				console.log(key)
 				col.push(key);
 			}
-			//col= [form[i].formID + form[i].reqDate + form[i].reqAmount + form[i].status + form[i].finalGrade];
+			
 		}
 
        }

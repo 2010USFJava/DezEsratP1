@@ -47,7 +47,19 @@ public class FormService {
 	
  public List<Form>getByStatus(String status){
 			List<Form>fList=new ArrayList<Form>();
+			//List<Form>pendingList=null;
+			
 			try {
+//				if(status.equals("pending")) {
+//					fList=fdao.getByStatus("pending");
+//					}
+//				if(status.equals("Approved By DirectSuoervisor")) {
+//					fList=fdao.getByStatus("Approved By DirectSuoervisor");
+//					}
+//				if(status.equals("Approved By DepartmentHead")) {
+//					fList=fdao.getByStatus("Approved By DepartmentHead");
+//					}
+				
 				fList=fdao.getByStatus(status);
 			
 			} catch (SQLException e) {
@@ -56,6 +68,23 @@ public class FormService {
 			return fList; 
   }
 
+    public List<Form>getAllFormByEmpType(String empType){
+    	List<Form> fStList=new ArrayList<Form>();
+    	try {
+			if (empType.equals("BenCo")) {
+				fStList = fdao.getByStatus("Approved By DepartmentHead");
+			}
+			if (empType.equals("DepartmentHead") && empType.equals("BenCo")) {
+				fStList = fdao.getByStatus("Approved By DirectSupervisor");
+			}
+			if (empType.equals("DirectSupervisor")) {
+				fStList = fdao.getByStatus("pending");
+			}
+    	} catch (SQLException e) {
+			e.printStackTrace();
+		}
+    	return fStList;
+    }
 		
 	
 	public void updateFormStatus(int formID, String newStatus) {

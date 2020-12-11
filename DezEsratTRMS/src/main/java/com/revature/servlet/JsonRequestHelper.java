@@ -31,9 +31,9 @@ public class JsonRequestHelper {
 			
 		case "/DezEsratTRMS/empHome.json":   
 			HomeController.employeeHome(req);
-			fs.getByStatus(EmpLoginController.currentForm.getStatus());
+			
 			//fs.getAllEmpForms(EmpLoginController.currentEmp.getEmpID());
-			res.getWriter().write(new ObjectMapper().writeValueAsString(EmpLoginController.fList));
+			res.getWriter().write(new ObjectMapper().writeValueAsString(fs.getAllFormByEmpType(EmpLoginController.currentEmp.getEmpType())));
 
 			break;
 		case "/DezEsratTRMS/requesterHome.json":   
@@ -42,7 +42,12 @@ public class JsonRequestHelper {
 			//fs.getByStatus(EmpLoginController.currentForm.getStatus());
 			res.getWriter().write(new ObjectMapper().writeValueAsString(fs.getAllEmpForms(EmpLoginController.currentEmp.getEmpID())));
 
-			break;		
+			break;	
+		case "/DezEsratTRMS/logout.json":
+			System.out.println("in logout json rhelper");
+			EmployeeController.logoutSession(req, res);
+			break;
+
 			
 		default:
 //			SuperVillain vill = new SuperVillain("?","?", 0);
