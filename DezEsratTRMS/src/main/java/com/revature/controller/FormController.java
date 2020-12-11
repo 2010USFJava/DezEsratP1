@@ -107,7 +107,7 @@ public class FormController {
         	return "resources/html/requestApprove.html";
 		}else if(EmpLoginController.currentEmp.getEmpType().equals("DirectSupervisor")) {
 			int formID=Integer.parseInt(req.getParameter("formID"));
-			fser.updateFormStatus(formID, "Approved By DirectSuoervisor");
+			fser.updateFormStatus(formID, "Approved By DirectSupervisor");
 		
         	return "resources/html/requestApprove.html";
 		}else if(EmpLoginController.currentEmp.getEmpType().equals("DepartmentHead")) {

@@ -72,11 +72,11 @@ public class FormService {
     	List<Form> fStList=new ArrayList<Form>();
     	try {
 			if (empType.equals("BenCo")) {
-				fStList = fdao.getByStatus("Approved By DepartmentHead");
-			}
-			if (empType.equals("DepartmentHead") && empType.equals("BenCo")) {
 				fStList = fdao.getByStatus("Approved By DirectSupervisor");
 			}
+//			if (empType.equals("DepartmentHead") && empType.equals("BenCo")) {
+//				fStList = fdao.getByStatus("Approved By DirectSupervisor");
+//			}
 			if (empType.equals("DirectSupervisor")) {
 				fStList = fdao.getByStatus("pending");
 			}
