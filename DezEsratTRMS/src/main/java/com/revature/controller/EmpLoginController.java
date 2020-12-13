@@ -51,8 +51,5 @@ public class EmpLoginController {
 			return "home.employee";//redirect to home?
 			
 		}
-		
-		
-
-}
+	}
 }

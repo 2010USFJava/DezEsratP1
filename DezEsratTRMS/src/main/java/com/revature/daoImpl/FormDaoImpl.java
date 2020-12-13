@@ -13,6 +13,7 @@ import com.revature.beans.Employee;
 import com.revature.beans.Form;
 import com.revature.dao.FormDao;
 import com.revature.util.ConnFactory;
+import com.revature.util.LogThis;
 
 public class FormDaoImpl implements FormDao{
 	
@@ -46,6 +47,7 @@ public class FormDaoImpl implements FormDao{
 			ps.setInt(9, gradeID);
 			ps.setInt(10, finalGrade);
 			ps.executeUpdate();
+			LogThis.LogIt("info", "New form added to database for: " + empID );
 		
 		}
 
@@ -60,6 +62,7 @@ public class FormDaoImpl implements FormDao{
 		Form f=null;
 		while(rs.next()) {
 			f=new Form(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6),rs.getString(7),rs.getString(8),rs.getInt(9),rs.getInt(10),rs.getInt(11));
+			
 		}
 		return f;
 	}
@@ -114,6 +117,7 @@ public class FormDaoImpl implements FormDao{
         while (rs.next()) {
             fList.add(new Form(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6),rs.getString(7),rs.getString(8),rs.getInt(9),rs.getInt(10),rs.getInt(11)));
 			
+            LogThis.LogIt("info", "Status has been updated: " + f.getFormID() );
 		}
 		
 		return fList;
@@ -128,7 +132,7 @@ public class FormDaoImpl implements FormDao{
 	        ps.setString(1, newStatus);
 	        ps.setInt(2, formID);
 	        ps.executeUpdate();
-
+	        LogThis.LogIt("info", "Status has been updated: " + formID);
 	       
 		}
 	
